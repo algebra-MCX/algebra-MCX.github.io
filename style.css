@@ -191,7 +191,7 @@ body, .bio p { font-size: 17px; line-height: 1.85; }
 h1 { font-size: 41px; }
 h2 { font-size: 26px; }
 .brand { font-size: 18px; }
-.site-header nav { font-size: 14px; }
+.site-header nav { font-size: 14px; margin-left: 0; margin-right: auto; }
 .language-toggle { font-size: 13px; }
 .section-intro, .research-list, .blog p, .contact p, .contact .email { font-size: 16px; }
 .research-list > div { grid-template-columns: 252px 1fr; }
@@ -264,7 +264,7 @@ h2 { font-weight: 600; letter-spacing: -.025em; }
 .bio strong, .research-list dt { font-weight: 600; }
 .bio p { line-height: 1.9; }
 html[lang="zh-CN"] .bio p { line-height: 1.95; letter-spacing: .018em; }
-.profile-caption { margin-top: 13px; font-size: 23px; font-weight: 600; letter-spacing: -.025em; line-height: 1.45; }
+.profile-caption { margin: 13px 0 0; font-size: 23px; font-weight: 600; letter-spacing: -.025em; line-height: 1.45; }
 @media(max-width:540px) {
   .profile-caption { display: block; width: max-content; position: relative; left: 50%; transform: translateX(-50%); margin-top: 9px; font-size: 19px; white-space: nowrap; }
   .bio h1 { margin-bottom: 90px; }
@@ -277,7 +277,7 @@ main, .bio, .project-copy { min-width: 0; }
 @media(max-width:820px) {
   .site-header.glass-surface { flex-wrap: wrap; gap: 8px 10px; min-height: 116px; }
   .site-header .brand { margin-right: auto; }
-  .site-header .language-toggle.glass-control { min-width: 64px; min-height: 44px; padding: 9px 12px; }
+  .site-header .language-toggle.glass-control { min-width: 64px; min-height: 44px; padding: 9px 12px; margin-left: auto; }
   .site-header .theme-toggle.glass-control { width: 44px; height: 44px; margin-left: 0; }
   .site-header nav {
     order: 3;
