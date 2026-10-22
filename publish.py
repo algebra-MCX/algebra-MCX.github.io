@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish this new homepage and disable the old Pages site with the user's gh login."""
+"""Create the homepage on the free GitHub Pages address with the user's gh login."""
 import json
 from pathlib import Path
 import shutil
@@ -8,9 +8,8 @@ import sys
 
 OWNER = "algebra-MCX"
 REPO = f"{OWNER}/{OWNER}.github.io"
-OLD_REPO = f"{OWNER}/Academic-Profile"
 ROOT = Path(__file__).resolve().parent
-FILES = ["index.html", "style.css", "main.js", "glass.js", "config.js", "assets/mark.svg", "assets/runtime.svg", "assets/compute.svg", "CNAME", ".nojekyll", ".gitignore", "publish.py", "publish.command", "使用说明.txt"]
+FILES = ["index.html", "style.css", "main.js", "glass.js", "config.js", "assets/mark.svg", "assets/runtime.svg", "assets/compute.svg", ".nojekyll", ".gitignore", "publish.py", "publish.command", "使用说明.txt"]
 
 
 def execute(args, *, payload=None, check=True):
@@ -54,23 +53,16 @@ def main():
     execute(["git", "-c", "user.name=Chenxi Ma", "-c", f"user.email={OWNER}@users.noreply.github.com", "commit", "-m", "Create Chenxi Ma personal homepage"])
     print(f"创建新仓库 {REPO}…", flush=True)
     execute(["gh", "repo", "create", REPO, "--public", "--source", str(ROOT), "--remote", "origin", "--push"])
-    print("启用 GitHub Pages，并配置 chenxima.com…", flush=True)
+    print("启用免费的 GitHub Pages 地址…", flush=True)
     pages = api(f"repos/{REPO}/pages", allow_missing=True)
     if pages is None:
         api(f"repos/{REPO}/pages", "POST", {"build_type": "legacy", "source": {"branch": "main", "path": "/"}})
-    api(f"repos/{REPO}/pages", "PUT", {"cname": "chenxima.com"})
     configured = api(f"repos/{REPO}/pages")
-    if configured.get("cname", "").lower() != "chenxima.com":
-        raise RuntimeError("新站已创建，但域名配置尚未确认。旧站尚未关闭。")
-
-    print("关闭旧 Academic-Profile 站点，保留其仓库内容…", flush=True)
-    if api(f"repos/{OLD_REPO}/pages", allow_missing=True) is not None:
-        api(f"repos/{OLD_REPO}/pages", "DELETE")
-    if api(f"repos/{OLD_REPO}/pages", allow_missing=True) is not None:
-        raise RuntimeError("旧站的关闭状态未能确认，请在其 Settings → Pages 中检查。")
-    print("旧站已关闭。新站已提交发布，GitHub 构建与域名解析生效后可访问 https://chenxima.com/。")
+    if configured.get("cname"):
+        raise RuntimeError("Pages 仍有自定义域名，请到 Settings → Pages → Custom domain 点击 Remove。")
+    print("新站已提交发布，GitHub 构建完成后可访问 https://algebra-mcx.github.io/。")
     print(f"新站设置：https://github.com/{REPO}/settings/pages")
-    print("请按使用说明配置域名 DNS，并在 GitHub Pages 设置中启用 HTTPS。")
+    print("使用默认地址无需购买域名或配置 DNS。")
 
 
 if __name__ == "__main__":

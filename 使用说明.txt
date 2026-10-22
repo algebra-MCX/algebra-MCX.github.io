@@ -4,9 +4,11 @@ Chenxi Ma 个人主页
 使用简介、头像、研究兴趣和紧凑项目列表；内容为 Chenxi Ma 的个人信息。
 头像来自用户 GitHub 头像，加载失败时显示名字缩写。
 
-站点文件已准备好；尚未发布，旧站尚未由本项目关闭。
-新仓库计划：algebra-MCX/algebra-MCX.github.io
-主页域名：https://chenxima.com/
+站点源码已上传至 algebra-MCX/algebra-MCX.github.io。
+免费主页地址：https://algebra-mcx.github.io/
+chenxima.com 仅为希望使用的名称，尚未购买，当前不绑定。
+若免费地址仍跳转到 chenxima.com，请按下方步骤移除 Pages 设置中的域名。
+旧 Academic-Profile 的 main 与 gh-pages 分支内容已清空，Git 历史保留。
 
 一、查看和修改
 移动端有专门布局：窄屏导航支持横滑，语言和主题按钮至少 44px 触控范围；手机头像和名字独立居中，项目卡片单列，正文保持 16px。支持刘海与底部安全区，触摸设备降低玻璃模糊并停止背景光晕动画。
@@ -24,29 +26,24 @@ Email、GitHub、X、小红书和知乎使用 SVG 图标与玻璃按钮。小红
 个人介绍和项目在 index.html；视觉样式在 style.css。
 本站保留 GitHub Pages 兼容的纯静态文件，无需安装构建依赖。
 
-二、发布
-本机需要 GitHub CLI（gh）、git 与 Python 3。
-在终端运行 gh auth login，使用 algebra-MCX 登录。
-双击 publish.command，或运行 bash publish.command。
-脚本将创建公开仓库 algebra-MCX/algebra-MCX.github.io、上传站点、启用 Pages、配置 chenxima.com，最后关闭 Academic-Profile 的 Pages。
-仓库若已经存在，脚本会停止以避免覆盖。发布中途失败后，请查看输出中的具体原因；不要删除已有仓库或 Git 记录来强行重试。
-配置 Pages 需要账号具有 Pages 和仓库管理权限。
+二、免费上线与后续更新
+仓库：https://github.com/algebra-MCX/algebra-MCX.github.io
+Pages 设置：https://github.com/algebra-MCX/algebra-MCX.github.io/settings/pages
+Custom domain 如有 chenxima.com，点击 Remove；此项应保持为空。
+Build and deployment：Source 为 Deploy from a branch，Branch 为 main，目录为 /(root)。
+保存后，等待仓库 Actions 中 pages build and deployment 成功。
+通过 https://algebra-mcx.github.io/ 访问，默认地址无需购买域名或配置 DNS。
+如浏览器记住了旧跳转，请使用无痕窗口打开免费地址。
 
-三、域名
-在 GitHub 新仓库 Settings → Pages → Custom domain 中检查 chenxima.com。
-然后在购买 chenxima.com 的域名服务商配置 DNS：
-类型 A，主机记录 @，分别添加以下四条记录值：
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-如果还需要 www，添加 CNAME：主机记录 www，值 algebra-MCX.github.io。
+后续修改文件后，提交到 main，GitHub Pages 会自动重新发布。
+本地 Git 记录可能落后于通过 GitHub 应用提交的远程记录，更新前先同步，勿强制推送。
+publish.command / publish.py 仅用于首次创建仓库；仓库已经存在时会停止以避免覆盖。
+首次创建需要 GitHub CLI（gh）、git 与 Python 3，以及 algebra-MCX 的登录和仓库管理权限。
+脚本默认使用免费地址，不绑定自定义域名。
+
+三、将来使用自己的域名
+.com 域名通常需要按年付费注册与续费。
+只有完成域名注册、确认可以管理 DNS 后，才在 Pages 中添加自定义域名。
+目前保持 Custom domain 为空，仓库根目录不保留 CNAME 文件。
 官方文档：
 https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
-等待 DNS 检查与证书签发生效，再勾选 Enforce HTTPS。
-默认 GitHub Pages 地址绑定自定义域名后会跳到 chenxima.com；DNS 未完成时，新站可能暂时无法访问。
-
-四、手动关闭旧站
-https://github.com/algebra-MCX/Academic-Profile/settings/pages
-Build and deployment → Source → Deploy from a branch。
-Branch → None → Save。此操作保留旧仓库的代码和文件。

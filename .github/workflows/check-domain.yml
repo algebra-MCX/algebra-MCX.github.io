@@ -1,46 +1,37 @@
-name: Domain connectivity diagnostics
+name: Free homepage connectivity check
 
 on:
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/check-domain.yml'
+  workflow_run:
+    workflows: ['pages build and deployment']
+    types: [completed]
 
 permissions:
   contents: read
   pages: read
 
 jobs:
-  diagnose:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
-      - name: Read GitHub Pages settings
+      - name: Confirm the default Pages address
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/pages" --jq '{status, cname, html_url, https_enforced, https_certificate, source}' || true
-          gh api "repos/$GITHUB_REPOSITORY/pages/health" || true
+          gh api "repos/$GITHUB_REPOSITORY/pages" > "$RUNNER_TEMP/pages-settings.json"
+          jq '{status, cname, html_url, https_enforced, source}' "$RUNNER_TEMP/pages-settings.json"
+          if ! jq -e '.cname == null or .cname == ""' "$RUNNER_TEMP/pages-settings.json"; then
+            echo "::error::Remove the custom domain in repository Settings > Pages to restore the free address."
+            exit 1
+          fi
 
-      - name: Read public DNS answers
+      - name: Verify the public homepage
         run: |
-          for record in A AAAA CNAME NS; do
-            echo "DNS record type: $record"
-            dig +time=3 +tries=1 +noall +answer chenxima.com "$record" || true
-          done
-          echo "WWW alias"
-          dig +time=3 +tries=1 +noall +answer www.chenxima.com CNAME || true
-          echo "Public resolver comparison"
-          dig @1.1.1.1 +time=3 +tries=1 +noall +answer chenxima.com A || true
-
-      - name: Check public HTTP responses
-        run: |
-          for url in https://chenxima.com/ http://chenxima.com/ https://algebra-mcx.github.io/ https://www.chenxima.com/; do
-            echo "HTTP target: $url"
-            curl --head --location --max-redirs 3 --connect-timeout 8 --max-time 20 --show-error --silent "$url" || true
-          done
-
-      - name: Check GitHub Pages origin directly
-        run: |
-          echo "Direct origin with the custom domain host and TLS name"
-          curl --head --connect-timeout 8 --max-time 20 --show-error --silent --resolve chenxima.com:443:185.199.108.153 https://chenxima.com/ || true
+          curl --fail --silent --show-error --location --max-redirs 3 --connect-timeout 8 --max-time 30 --retry 2 --retry-delay 10 --dump-header "$RUNNER_TEMP/homepage-headers.txt" --output "$RUNNER_TEMP/homepage.html" --write-out 'HTTP %{http_code}; final URL: %{url_effective}\n' https://algebra-mcx.github.io/
+          cat "$RUNNER_TEMP/homepage-headers.txt"
+          grep -q 'Chenxi Ma' "$RUNNER_TEMP/homepage.html"
+          grep -q 'https://algebra-mcx.github.io/' "$RUNNER_TEMP/homepage.html"
