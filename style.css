@@ -329,3 +329,7 @@ main, .bio, .project-copy { min-width: 0; }
   .glass-ambient span { animation: none; }
   .glass-surface, .glass-control { -webkit-backdrop-filter: blur(14px) saturate(var(--glass-saturation)); backdrop-filter: blur(14px) saturate(var(--glass-saturation)); }
 }
+
+/* Keep the complete circular illustration visible inside its glass frame. */
+.portrait-frame--illustration.glass-surface { height: auto; aspect-ratio: 1; }
+.portrait-frame--illustration .portrait { height: auto; aspect-ratio: 1; object-fit: contain; background: transparent; clip-path: circle(45% at 49.8% 49.7%); transform: scale(1.1); }
