@@ -1,0 +1,46 @@
+name: Domain connectivity diagnostics
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/check-domain.yml'
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read GitHub Pages settings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pages" --jq '{status, cname, html_url, https_enforced, https_certificate, source}' || true
+          gh api "repos/$GITHUB_REPOSITORY/pages/health" || true
+
+      - name: Read public DNS answers
+        run: |
+          for record in A AAAA CNAME NS; do
+            echo "DNS record type: $record"
+            dig +time=3 +tries=1 +noall +answer chenxima.com "$record" || true
+          done
+          echo "WWW alias"
+          dig +time=3 +tries=1 +noall +answer www.chenxima.com CNAME || true
+          echo "Public resolver comparison"
+          dig @1.1.1.1 +time=3 +tries=1 +noall +answer chenxima.com A || true
+
+      - name: Check public HTTP responses
+        run: |
+          for url in https://chenxima.com/ http://chenxima.com/ https://algebra-mcx.github.io/ https://www.chenxima.com/; do
+            echo "HTTP target: $url"
+            curl --head --location --max-redirs 3 --connect-timeout 8 --max-time 20 --show-error --silent "$url" || true
+          done
+
+      - name: Check GitHub Pages origin directly
+        run: |
+          echo "Direct origin with the custom domain host and TLS name"
+          curl --head --connect-timeout 8 --max-time 20 --show-error --silent --resolve chenxima.com:443:185.199.108.153 https://chenxima.com/ || true
