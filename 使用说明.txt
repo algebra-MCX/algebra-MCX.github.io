@@ -1,0 +1,52 @@
+Chenxi Ma 个人主页
+
+设计参考：https://wenhaochai.com/ 的学术个人主页结构。
+使用简介、头像、研究兴趣和紧凑项目列表；内容为 Chenxi Ma 的个人信息。
+头像来自用户 GitHub 头像，加载失败时显示名字缩写。
+
+站点文件已准备好；尚未发布，旧站尚未由本项目关闭。
+新仓库计划：algebra-MCX/algebra-MCX.github.io
+主页域名：https://chenxima.com/
+
+一、查看和修改
+移动端有专门布局：窄屏导航支持横滑，语言和主题按钮至少 44px 触控范围；手机头像和名字独立居中，项目卡片单列，正文保持 16px。支持刘海与底部安全区，触摸设备降低玻璃模糊并停止背景光晕动画。
+液态玻璃效果包括悬浮磨砂导航、跟随鼠标的高光、滑动导航透镜与点击涟漪。效果会适配深浅色，系统启用减少动态效果时停止动画。
+导航透镜使用按时间计算的阻尼弹簧，切换导航时自然过渡并吸附到选中项。正文已放大，英文使用 Nunito Sans，加载不到时回退到系统圆润无衬线字体；中文使用系统黑体。
+透镜采用连续阻尼运动，快速切换方向时保留原有速度；滑动时轻微拉伸，到位后柔和恢复。动画按实际时间计算，适配不同刷新率。
+日间主题使用低亮度雾灰背景，叠加低饱和蓝灰与灰绿色光晕；导航、卡片和按钮采用蓝透明玻璃，搭配清晰的蓝灰描边与柔和反光。
+导航、社交按钮、主题和语言切换、项目卡片的点击反馈为三圈向外扩散的涟漪，支持鼠标、触摸与键盘；系统减少动态效果时停用。头像下方仅显示放大的 Chenxi Ma。
+光标在导航栏内移动时，透镜吸附到对应导航项；离开整个导航栏后，透镜停在最后一项，不回弹。点击导航仍正常跳转；中英文切换和窗口变化后会重新对齐。
+默认显示英文，右上角「中文 / English」可切换语言，并记住上次选择。
+切换覆盖正文、导航、图片替代文字与辅助功能标签。浏览器禁用本地存储时仍可正常切换，禁用 JavaScript 时显示英文。
+双击 index.html 可预览。填写 config.js 中的 blogUrl 后，顶部与正文的博客链接会直接跳转到该网址。
+例如 blogUrl: "https://你的博客地址/"。留空时博客入口不可点击。
+Email、GitHub、X、小红书和知乎使用 SVG 图标与玻璃按钮。小红书、知乎链接分别填写 config.js 的 xiaohongshuUrl、zhihuUrl；留空时显示图标但不跳转。
+个人介绍和项目在 index.html；视觉样式在 style.css。
+本站保留 GitHub Pages 兼容的纯静态文件，无需安装构建依赖。
+
+二、发布
+本机需要 GitHub CLI（gh）、git 与 Python 3。
+在终端运行 gh auth login，使用 algebra-MCX 登录。
+双击 publish.command，或运行 bash publish.command。
+脚本将创建公开仓库 algebra-MCX/algebra-MCX.github.io、上传站点、启用 Pages、配置 chenxima.com，最后关闭 Academic-Profile 的 Pages。
+仓库若已经存在，脚本会停止以避免覆盖。发布中途失败后，请查看输出中的具体原因；不要删除已有仓库或 Git 记录来强行重试。
+配置 Pages 需要账号具有 Pages 和仓库管理权限。
+
+三、域名
+在 GitHub 新仓库 Settings → Pages → Custom domain 中检查 chenxima.com。
+然后在购买 chenxima.com 的域名服务商配置 DNS：
+类型 A，主机记录 @，分别添加以下四条记录值：
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+如果还需要 www，添加 CNAME：主机记录 www，值 algebra-MCX.github.io。
+官方文档：
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+等待 DNS 检查与证书签发生效，再勾选 Enforce HTTPS。
+默认 GitHub Pages 地址绑定自定义域名后会跳到 chenxima.com；DNS 未完成时，新站可能暂时无法访问。
+
+四、手动关闭旧站
+https://github.com/algebra-MCX/Academic-Profile/settings/pages
+Build and deployment → Source → Deploy from a branch。
+Branch → None → Save。此操作保留旧仓库的代码和文件。
