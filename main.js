@@ -54,7 +54,6 @@
       link.removeAttribute("title");
       link.removeAttribute("role");
     });
-    document.querySelector("[data-blog-status]").hidden = true;
   }
   document.querySelectorAll("[data-profile-link]").forEach(link => {
     const url = configuredUrl(window.HOME_CONFIG?.[`${link.dataset.profileLink}Url`]);
