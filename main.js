@@ -1,6 +1,5 @@
 (() => {
   "use strict";
-  const themeButton = document.querySelector(".theme-toggle");
   const languageButton = document.querySelector(".language-toggle");
   const resumeLinks = document.querySelectorAll("[data-resume-link]");
   const resumeFiles = {
@@ -21,12 +20,6 @@
   let language = "en";
   let savedLanguage;
   try { savedLanguage = localStorage.getItem("mcx-home-language"); } catch { /* Storage is optional. */ }
-  function updateThemeLabel() {
-    const dark = document.documentElement.dataset.theme === "dark";
-    themeButton.setAttribute("aria-label", language === "zh"
-      ? (dark ? "切换至浅色模式" : "切换至深色模式")
-      : (dark ? "Switch to light mode" : "Switch to dark mode"));
-  }
   function applyLanguage(nextLanguage) {
     language = nextLanguage === "zh" ? "zh" : "en";
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -38,7 +31,6 @@
     languageButton.textContent = language === "en" ? "中文" : "English";
     languageButton.lang = language === "en" ? "zh-CN" : "en";
     languageButton.setAttribute("aria-label", language === "en" ? "Switch to Chinese" : "切换至英文");
-    updateThemeLabel();
   }
   applyLanguage(savedLanguage);
   languageButton.hidden = false;
@@ -77,23 +69,5 @@
     portrait.addEventListener("error", () => { portrait.hidden = true; });
     if (portrait.complete && portrait.naturalWidth === 0) portrait.hidden = true;
   }
-  const preference = window.matchMedia("(prefers-color-scheme: dark)");
-  let savedTheme;
-  try { savedTheme = localStorage.getItem("mcx-home-theme"); } catch { /* Storage is optional. */ }
-  function applyTheme(dark) {
-    document.documentElement.dataset.theme = dark ? "dark" : "light";
-    themeButton.setAttribute("aria-pressed", String(dark));
-    updateThemeLabel();
-    document.querySelector('meta[name="theme-color"]').content = dark ? "#131820" : "#d4dce0";
-  }
-  applyTheme(savedTheme === "dark" || (savedTheme !== "light" && preference.matches));
-  themeButton.hidden = false;
-  themeButton.addEventListener("click", () => {
-    const dark = document.documentElement.dataset.theme !== "dark";
-    applyTheme(dark);
-    savedTheme = dark ? "dark" : "light";
-    try { localStorage.setItem("mcx-home-theme", savedTheme); } catch { /* Storage is optional. */ }
-  });
-  preference.addEventListener("change", event => { if (!savedTheme) applyTheme(event.matches); });
   document.querySelector("#year").textContent = String(new Date().getFullYear());
 })();
