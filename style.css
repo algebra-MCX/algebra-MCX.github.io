@@ -221,6 +221,7 @@ h2 { font-size: 26px; }
 .social-red .social-icon { width: 29px; color: #e93650; }
 .social-zhihu .social-icon { color: #267bdf; }
 .social-link[aria-disabled="true"] { opacity: .65; cursor: default; }
+.social-resume:disabled { appearance: none; transform: none; }
 @media(hover:hover) and (pointer:fine) { .social-link:not([aria-disabled="true"]):hover { transform: translateY(-2px); box-shadow: 0 9px 22px -12px rgba(60, 110, 185, .45), var(--glass-inset); } }
 @media(max-width:760px) {
   .shell { width: calc(100% - 48px); }
