@@ -1,11 +1,6 @@
 (() => {
   "use strict";
   const languageButton = document.querySelector(".language-toggle");
-  const resumeLinks = document.querySelectorAll("[data-resume-link]");
-  const resumeFiles = {
-    en: "assets/chenxi-ma-resume-en.pdf",
-    zh: "assets/chenxi-ma-resume-zh.pdf",
-  };
   const translations = [...document.querySelectorAll("[data-zh]")].map(node => ({
     node, en: node.textContent, zh: node.dataset.zh,
   }));
@@ -27,7 +22,6 @@
     translatedAttributes.forEach(item => {
       if (item.node.hasAttribute(item.attribute)) item.node.setAttribute(item.attribute, item[language]);
     });
-    resumeLinks.forEach(link => { link.href = resumeFiles[language]; });
     languageButton.textContent = language === "en" ? "中文" : "English";
     languageButton.lang = language === "en" ? "zh-CN" : "en";
     languageButton.setAttribute("aria-label", language === "en" ? "Switch to Chinese" : "切换至英文");
