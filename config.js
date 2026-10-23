@@ -4,5 +4,5 @@ window.HOME_CONFIG = Object.freeze({
   blogUrl: "https://tech-blog-chi.vercel.app/guides/how-to-read/",
   // 填写小红书与知乎的个人主页完整地址。
   xiaohongshuUrl: "",
-  zhihuUrl: "",
+  zhihuUrl: "https://www.zhihu.com/people/zhib1eiazpn",
 });
