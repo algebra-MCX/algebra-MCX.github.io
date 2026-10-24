@@ -14,7 +14,7 @@
   })));
   let language = "en";
   let savedLanguage;
-  try { savedLanguage = localStorage.getItem("mcx-home-language"); } catch { /* Storage is optional. */ }
+  try { savedLanguage = localStorage.getItem("mcx-home-language-v2"); } catch { /* Storage is optional. */ }
   function applyLanguage(nextLanguage) {
     language = nextLanguage === "zh" ? "zh" : "en";
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -30,7 +30,7 @@
   languageButton.hidden = false;
   languageButton.addEventListener("click", () => {
     applyLanguage(language === "en" ? "zh" : "en");
-    try { localStorage.setItem("mcx-home-language", language); } catch { /* Storage is optional. */ }
+    try { localStorage.setItem("mcx-home-language-v2", language); } catch { /* Storage is optional. */ }
   });
   function configuredUrl(value) {
     try {
