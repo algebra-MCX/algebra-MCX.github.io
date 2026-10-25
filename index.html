@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=cv-disabled-1">
+  <link rel="stylesheet" href="style.css?v=contributions-1">
   <script src="config.js?v=xiaohongshu-1" defer></script>
   <script src="main.js?v=default-english-2" defer></script>
   <script src="glass.js" defer></script>
@@ -30,9 +30,9 @@
       <span class="nav-lens" aria-hidden="true"></span>
       <a href="#about" data-zh="关于">About</a>
       <a href="#research" data-zh="研究">Research</a>
-      <a href="#vllm">vLLM</a>
       <a href="#projects" data-zh="项目">Projects</a>
       <a data-blog-link role="link" aria-disabled="true" title="Blog coming soon" data-zh-title="博客尚未开放" data-zh="博客 ↗">Blog ↗</a>
+      <a href="#contributions" data-zh="贡献与致谢">Contributions &amp; Thanks</a>
     </nav>
     <button class="language-toggle glass-control" type="button" lang="zh-CN" aria-label="Switch to Chinese" hidden>中文</button>
   </header>
@@ -83,16 +83,6 @@
       </dl>
     </section>
 
-    <section class="section" id="vllm" aria-labelledby="vllm-title">
-      <div class="section-title"><h2 id="vllm-title">vLLM</h2><a class="all-link" href="https://github.com/vllm-project/vllm/pulls?q=is%3Apr+author%3Aalgebra-MCX" data-zh="全部 PR ↗">All PRs ↗</a></div>
-      <p class="section-intro"><span data-zh="我是 ">I'm a contributor to </span><a href="https://github.com/vllm-project/vllm">vLLM</a><span data-zh="。我的工作集中在 Model Runner V2（MRV2）里的 MoE 专家并行：双批次重叠（DBO）下的正确性修复，以及基于 NIXL 的 dispatch 性能。其中两个 DBO 正确性修复已合入 main。">. My work focuses on MoE expert parallelism in Model Runner V2 (MRV2): correctness fixes under dual-batch overlap (DBO), and the performance of NIXL-based dispatch. Two of my DBO correctness fixes have been merged into main.</span></p>
-      <dl class="research-list">
-        <div><dt><a href="https://github.com/vllm-project/vllm/pull/63476">#63476 · [Bugfix][MRV2] Report the first failed DBO microbatch</a></dt><dd><span data-zh="已合并到 main。">Merged into main.</span><br><small><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/LucasWilkinson">@LucasWilkinson</a></small></dd></div>
-        <div><dt><a href="https://github.com/vllm-project/vllm/pull/63372">#63372 · [Bugfix][MRV2] Keep routed-expert rows of every DBO microbatch</a></dt><dd><span data-zh="已合并到 main。">Merged into main.</span><br><small><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/aoshen02">@aoshen02</a>, <a href="https://github.com/Ronald1995">@Ronald1995</a></small><br><small><span data-zh="共同作者（重构与补充测试）：">Co-author (refactor &amp; additional tests): </span><a href="https://github.com/Ronald1995">@Ronald1995</a></small></dd></div>
-        <div><dt><a href="https://github.com/vllm-project/vllm/pull/63485">#63485 · [Perf][MoE] Size NIXL dispatch from synchronized execution slices</a></dt><dd data-zh="评审中。">In review.</dd></div>
-      </dl>
-    </section>
-
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-title"><h2 id="projects-title" data-zh="精选项目">Selected Projects</h2><a class="all-link" href="https://github.com/algebra-MCX?tab=repositories" data-zh="全部仓库 ↗">All repositories ↗</a></div>
       <article class="project glass-surface">
@@ -103,6 +93,38 @@
         <a class="project-image" href="https://github.com/algebra-MCX/MoEFlow" tabindex="-1" aria-hidden="true"><img src="assets/compute.svg" width="210" height="132" alt="" loading="lazy"></a>
         <div class="project-copy"><h3><a href="https://github.com/algebra-MCX/MoEFlow">MoEFlow</a></h3><p class="project-subtitle" data-zh="面向 vLLM 的 MoE 专家并行。">MoE expert parallelism for vLLM.</p><p data-zh="融合 Triton kernel、两倍 NCCL all-to-all，以及在 B200 上的 CUDA Graph decode。">Fused Triton kernels, 2× NCCL all-to-all, and CUDA Graph decode on B200.</p><div class="project-meta"><span data-zh="Triton · NCCL · MoE">Triton · NCCL · MoE</span><a href="https://github.com/algebra-MCX/MoEFlow" data-zh="代码 ↗">Code ↗</a></div></div>
       </article>
+    </section>
+
+    <section class="section contributions" id="contributions" aria-labelledby="contributions-title">
+      <span id="vllm" aria-hidden="true"></span>
+      <div class="section-title"><h2 id="contributions-title" data-zh="贡献与致谢">Contributions &amp; Thanks</h2><a class="all-link" href="https://github.com/vllm-project/vllm/pulls?q=is%3Apr+author%3Aalgebra-MCX" data-zh="全部 PR ↗">All PRs ↗</a></div>
+      <p class="section-intro" data-zh="我在 vLLM 中的部分开源贡献，聚焦 MoE 专家并行、双批次重叠（DBO）和 NIXL dispatch。感谢在这些工作中给予帮助的伙伴。">Selected contributions to vLLM, focusing on MoE expert parallelism, dual-batch overlap (DBO), and NIXL dispatch. Thanks to everyone who helped along the way.</p>
+      <dl class="research-list contribution-list">
+        <div>
+          <dt><a href="https://github.com/vllm-project/vllm/pull/63476">#63476 · Report the first failed DBO microbatch</a></dt>
+          <dd>
+            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+            <p data-zh="报告最先记录的 microbatch 异常，避免后续错误掩盖原始问题。">Report the first recorded microbatch failure so that follow-on errors do not hide the original problem.</p>
+            <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/LucasWilkinson">@LucasWilkinson</a></div>
+          </dd>
+        </div>
+        <div>
+          <dt><a href="https://github.com/vllm-project/vllm/pull/63372">#63372 · Keep routed-expert rows of every DBO microbatch</a></dt>
+          <dd>
+            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+            <p data-zh="按各 microbatch 的 token 偏移保存专家路由，修复路由结果相互覆盖的问题。">Preserve expert routing at each microbatch's token offset, fixing overwritten routing results.</p>
+            <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/aoshen02">@aoshen02</a>, <a href="https://github.com/Ronald1995">@Ronald1995</a></div>
+            <div class="contribution-credit"><span data-zh="共同作者（重构与补充测试）：">Co-author (refactor &amp; additional tests): </span><a href="https://github.com/Ronald1995">@Ronald1995</a></div>
+          </dd>
+        </div>
+        <div>
+          <dt><a href="https://github.com/vllm-project/vllm/pull/63485">#63485 · Size NIXL dispatch from synchronized execution slices</a></dt>
+          <dd>
+            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
+            <p data-zh="按同步后的 DP / SP 执行规模设置 NIXL dispatch 容量，减少小批次下的冗余工作。">Size NIXL dispatch from synchronized DP / SP execution sizes to reduce unnecessary work for small batches.</p>
+          </dd>
+        </div>
+      </dl>
     </section>
 
   </main>

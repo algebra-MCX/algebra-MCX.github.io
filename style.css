@@ -334,3 +334,19 @@ main, .bio, .project-copy { min-width: 0; }
 /* Keep the complete circular illustration visible inside its glass frame. */
 .portrait-frame--illustration.glass-surface { height: auto; aspect-ratio: 1; border-radius: 50%; }
 .portrait-frame--illustration .portrait { height: auto; aspect-ratio: 1; object-fit: contain; background: transparent; clip-path: circle(45% at 49.8% 49.7%); transform: scale(1.1); }
+
+/* PR contributions and the people who helped. */
+.contribution-list > div { display: block; margin-top: 0; padding-block: 22px; border-top: 1px solid var(--line); }
+.contribution-list > div:first-child { border-top: 0; padding-top: 0; }
+.contribution-list > div:last-child { padding-bottom: 0; }
+.contribution-list dt { font-size: 18px; line-height: 1.6; overflow-wrap: anywhere; }
+.contribution-list dd { margin: 10px 0 0; }
+.contribution-list dd p { margin: 10px 0; }
+.contribution-status { display: inline-block; padding: 2px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 13px; }
+.contribution-status--pending { color: var(--muted); }
+.contribution-credit { margin-top: 5px; font-size: 14px; overflow-wrap: anywhere; }
+@media(max-width:540px) {
+  .contribution-list dt { font-size: 16px; }
+  .contribution-list dd { font-size: 15px; }
+  .contribution-credit { font-size: 14px; }
+}
