@@ -98,7 +98,7 @@
     <section class="section contributions" id="contributions" aria-labelledby="contributions-title">
       <span id="vllm" aria-hidden="true"></span>
       <div class="section-title"><h2 id="contributions-title" data-zh="贡献与致谢">Contributions &amp; Thanks</h2><a class="all-link" href="https://github.com/search?q=is%3Apr+author%3Aalgebra-MCX+is%3Apublic+-user%3Aalgebra-MCX&amp;type=pullrequests" data-zh="全部 PR ↗">All PRs ↗</a></div>
-      <p class="section-intro" data-zh="我在 vLLM、DeepInfer、TraceLab 和 JittorInfer 中的开源贡献，涉及 MoE 专家并行、推理 Runtime 与工作负载回放。以下列出已合并和仍开放的 PR，状态截至 2026 年 10 月 26 日。感谢在这些工作中给予帮助的伙伴。">Open-source contributions to vLLM, DeepInfer, TraceLab, and JittorInfer, covering MoE expert parallelism, inference runtimes, and workload replay. Merged and open PRs are listed below; statuses checked on October 26, 2026. Thanks to everyone who helped along the way.</p>
+      <p class="section-intro" data-zh="我在 vLLM 中的开源贡献，聚焦 MoE 专家并行、双批次重叠（DBO）、NIXL dispatch 和 KV cache。以下列出已合并和仍开放的 PR，状态截至 2026 年 10 月 26 日。感谢在这些工作中给予帮助的伙伴。">Open-source contributions to vLLM, focusing on MoE expert parallelism, dual-batch overlap (DBO), NIXL dispatch, and KV caches. Merged and open PRs are listed below; statuses checked on October 26, 2026. Thanks to everyone who helped along the way.</p>
       <dl class="research-list contribution-list">
         <div>
           <dt><a href="https://github.com/vllm-project/vllm/pull/63476">vLLM #63476 · Report the first failed DBO microbatch</a></dt>
@@ -143,34 +143,6 @@
           <dd>
             <span class="contribution-status" data-zh="已合并到协作者分支">Merged into collaborator branch</span>
             <p data-zh="补充异步 KV 加载准入上限的回归测试，并统一 prefill/decode 测试中的 block 大小。已合并到协作者的修复分支。">Add regression coverage for capped asynchronous KV-load admission and align block sizes in prefill/decode tests. Merged into the collaborator's fix branch.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/deepseek-ai/DeepInfer/pull/99">DeepInfer #99 · Add an NVLink Engram fetch for single-node runs without NCCL GIN</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="为缺少 NCCL GIN 的单机部署提供可选的 NVLink Engram fetch 路径，支持 CUDA Graph 捕获。">Add an opt-in NVLink Engram fetch path for single-node deployments without NCCL GIN, with CUDA Graph capture support.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/uw-syfi/TraceLab/pull/1">TraceLab #1 · Add session-aware vLLM workload runner</a></dt>
-          <dd>
-            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
-            <p data-zh="新增 Rust runner，以闭环方式回放 coding-agent 会话，保留轮次顺序、到达时序、token 规模与工具等待时间。">Add a Rust runner for closed-loop replay of coding-agent sessions, preserving round order, arrival timing, token shapes, and tool wait times.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/uw-syfi/TraceLab/pull/11">TraceLab #11 · Add SGLang backend adapter</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="新增可复用的 SGLang 后端适配器，支持 token ID 输入、流式响应解析、生成 token 恢复与缓存指标统一。">Add a reusable SGLang backend adapter with token-ID input, streaming response parsing, generated token recovery, and normalized cache metrics.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/Jittor/JittorInfer/pull/7">JittorInfer #7 · Feature/qwen2.5ge</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="补充 Qwen2.5 支持，包括模型加载、分词，以及常规和 GE 计算图构建路径。">Add Qwen2.5 support with model loading, tokenization, and standard and GE graph-building paths.</p>
           </dd>
         </div>
       </dl>
