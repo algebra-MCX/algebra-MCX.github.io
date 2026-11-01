@@ -9,6 +9,7 @@
     ["[data-zh-alt]", "alt", "zhAlt"],
     ["[data-zh-title]", "title", "zhTitle"],
     ["[data-zh-content]", "content", "zhContent"],
+    ["[data-zh-href]", "href", "zhHref"],
   ].flatMap(([selector, attribute, key]) => [...document.querySelectorAll(selector)].map(node => ({
     node, attribute, en: node.getAttribute(attribute), zh: node.dataset[key],
   })));
