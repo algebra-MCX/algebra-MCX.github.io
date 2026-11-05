@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://algebra-mcx.github.io/sitemap.xml
