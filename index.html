@@ -31,9 +31,9 @@
       "url": "https://algebra-mcx.github.io/",
       "image": "https://algebra-mcx.github.io/assets/chenxi-avatar.png",
       "jobTitle": "Undergraduate researcher, LLM inference and GPU systems",
-      "description": "Chenxi Ma, vLLM contributor working on MoE expert parallelism, dual-batch overlap and NIXL-based dispatch. Interests: LLM inference runtimes and GPU systems.",
+      "description": "Chenxi Ma, contributor to vLLM and SGLang, working on MoE expert parallelism, batch overlap, expert-routing correctness and NIXL-based dispatch. Interests: LLM inference runtimes and GPU systems.",
       "affiliation": {"@type": "Organization", "name": "UW Systems Lab"},
-      "knowsAbout": ["LLM inference", "GPU systems", "Mixture of Experts", "vLLM"],
+      "knowsAbout": ["LLM inference", "GPU systems", "Mixture of Experts", "vLLM", "SGLang"],
       "sameAs": ["https://github.com/algebra-MCX", "https://x.com/Shannon20051127", "https://tech-blog-chi.vercel.app/"]
     }
   }
@@ -70,6 +70,7 @@
         <p><span data-zh="特别感谢 ">Special thanks to </span><a href="https://kanzhu.netlify.app/uploads/KanZhuCV.pdf" data-zh="朱侃">Kan Zhu</a><span data-zh=" 师兄的关照！"> for his support and mentorship!</span> <span data-zh="师兄即将毕业，实力过硬，欢迎各大厂联系！">He’s graduating soon—an exceptional researcher well worth hiring.</span></p>
         <p data-zh="我的技术兴趣包括推理 Runtime、GPU 调度、混合专家模型，以及分布式推理中的通信与计算。同时，我也对模型架构、Agent Harness、硬件与 Infra 之间的 Co-design 感兴趣。">My technical interests include inference runtimes, GPU scheduling, mixture-of-experts models, and communication and computation in distributed inference. I'm also interested in co-design across model architectures, agent harnesses, hardware, and infrastructure.</p>
         <p><span data-zh="我是 ">I'm a contributor to </span><a href="https://github.com/vllm-project/vllm">vLLM</a><span data-zh=" 的贡献者，方向是 Model Runner V2 中的 MoE 专家并行、双批次重叠（DBO）和基于 NIXL 的 dispatch。">, working on MoE expert parallelism, dual-batch overlap (DBO), and NIXL-based dispatch in Model Runner V2 (MRV2).</span> <span data-zh="随着 MRV2 架构更新，DBO 将成为默认实现。">With the MRV2 architecture update, DBO will become the default implementation.</span></p>
+        <p><span data-zh="我也是 ">I also contribute to </span><a href="https://github.com/sgl-project/sglang">SGLang</a><span data-zh=" 的贡献者，关注双批次重叠（TBO）与数据并行推理中专家路由记录的正确性。">, focusing on the correctness of expert-routing records in two-batch overlap (TBO) and data-parallel inference.</span></p>
         <p data-zh="这里收录我的项目与研究兴趣。个人博客刚刚搭建，之后会在其中分享技术文章和实验笔记。">This page brings together my projects and research interests. My personal blog has just launched, where I'll share technical articles and experiment notes.</p>
         <p data-zh="我正在寻找大模型基座方向的实习和正式工作。">I'm looking for internship and full-time opportunities in foundation-model (LLM base-model) teams.</p>
         <div class="social-links" aria-label="Social and contact links" data-zh-label="社交与联系方式">
@@ -126,7 +127,7 @@
     <section class="section contributions" id="contributions" aria-labelledby="contributions-title">
       <span id="vllm" aria-hidden="true"></span>
       <div class="section-title"><h2 id="contributions-title" data-zh="贡献与致谢">Contributions &amp; Thanks</h2><a class="all-link" href="https://github.com/search?q=is%3Apr+author%3Aalgebra-MCX+is%3Apublic+-user%3Aalgebra-MCX&amp;type=pullrequests" data-zh="全部 PR ↗">All PRs ↗</a></div>
-      <p class="section-intro" data-zh="我在 vLLM 中的开源贡献，聚焦 MoE 专家并行、双批次重叠（DBO）、NIXL dispatch 和 KV cache。以下列出已合并和仍开放的 PR，状态截至 2026 年 10 月 26 日。感谢在这些工作中给予帮助的伙伴。">Open-source contributions to vLLM, focusing on MoE expert parallelism, dual-batch overlap (DBO), NIXL dispatch, and KV caches. Merged and open PRs are listed below; statuses checked on October 26, 2026. Thanks to everyone who helped along the way.</p>
+      <p class="section-intro" data-zh="我为 vLLM 和 SGLang 贡献代码，关注 MoE 专家并行、批次重叠、专家路由记录、NIXL dispatch 和 KV cache。以下收录已合并和进行中的工作。感谢在这些工作中给予帮助的伙伴。">I contribute to vLLM and SGLang, with a focus on MoE expert parallelism, batch overlap, expert-routing records, NIXL dispatch, and KV caches. Selected merged and ongoing contributions are listed below. Thanks to everyone who helped along the way.</p>
       <dl class="research-list contribution-list">
         <div>
           <dt><a href="https://github.com/vllm-project/vllm/pull/63476">vLLM #63476 · Report the first failed DBO microbatch</a></dt>
@@ -171,6 +172,20 @@
           <dd>
             <span class="contribution-status" data-zh="已合并到协作者分支">Merged into collaborator branch</span>
             <p data-zh="补充异步 KV 加载准入上限的回归测试，并统一 prefill/decode 测试中的 block 大小。已合并到协作者的修复分支。">Add regression coverage for capped asynchronous KV-load admission and align block sizes in prefill/decode tests. Merged into the collaborator's fix branch.</p>
+          </dd>
+        </div>
+        <div>
+          <dt><a href="https://github.com/sgl-project/sglang/pull/48666">SGLang #48666 · Capture routed experts at each TBO child's parent rows</a></dt>
+          <dd>
+            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+            <p data-zh="将 TBO 子批次的专家路由写入父批次中对应的 token 行，修复共享缓冲区中的记录覆盖，并对齐非 EP 数据并行场景下的行偏移。">Map each TBO child's expert-routing records to its rows in the parent batch, preventing shared-buffer overwrites and aligning row offsets for non-EP data parallelism.</p>
+          </dd>
+        </div>
+        <div>
+          <dt><a href="https://github.com/sgl-project/sglang/pull/48691">SGLang #48691 · Read DP-local routed-expert rows for every A2A backend</a></dt>
+          <dd>
+            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
+            <p data-zh="在 DP attention 下，统一各 all-to-all 后端对 DP 本地专家路由记录的读取方式，修复 NIXL 在非零 DP rank 上返回错误专家 ID 的问题。">Read DP-local expert-routing records consistently across all-to-all backends under DP attention, fixing incorrect expert IDs returned by NIXL on nonzero DP ranks.</p>
           </dd>
         </div>
       </dl>
