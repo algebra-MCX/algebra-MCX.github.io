@@ -217,7 +217,7 @@ h2 { font-size: 26px; }
 .social-link.glass-control:hover { text-decoration: none; }
 .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; flex-shrink: 0; }
 .social-icon svg { display: block; width: 100%; height: 100%; }
-.social-email .social-icon { color: var(--link); }
+.social-email .social-icon, .social-resume .social-icon { color: var(--link); }
 .social-red .social-icon { width: 29px; color: #e93650; }
 .social-zhihu .social-icon { color: #267bdf; }
 .social-link[aria-disabled="true"] { opacity: .65; cursor: default; }
