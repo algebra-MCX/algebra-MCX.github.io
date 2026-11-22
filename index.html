@@ -44,10 +44,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=contributions-1">
+  <link rel="stylesheet" href="style.css?v=contribution-nav-2">
   <script src="config.js?v=xiaohongshu-1" defer></script>
-  <script src="main.js?v=cv-lang-1" defer></script>
-  <script src="glass.js" defer></script>
+  <script src="main.js?v=contribution-nav-2" defer></script>
+  <script src="glass.js?v=contribution-nav-1" defer></script>
 </head>
 <body>
   <div class="glass-ambient" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -56,11 +56,10 @@
   <header class="site-header shell glass-surface">
     <nav aria-label="Main navigation" data-zh-label="主导航">
       <span class="nav-lens" aria-hidden="true"></span>
-      <a href="#about" data-zh="关于">About</a>
-      <a href="#research" data-zh="研究">Research</a>
-      <a href="#projects" data-zh="项目">Projects</a>
-      <a data-blog-link role="link" aria-disabled="true" title="Blog coming soon" data-zh-title="博客尚未开放" data-zh="博客 ↗">Blog ↗</a>
-      <a href="#contributions" data-zh="贡献与致谢">Contributions &amp; Thanks</a>
+      <a href="#about" data-zh="关于我">About me</a>
+      <a data-blog-link role="link" aria-disabled="true" title="Blog coming soon" data-zh-title="博客尚未开放" data-zh="博客">Blog</a>
+      <a data-learning-link role="link" aria-disabled="true" title="Learning site coming soon" data-zh-title="学习站尚未开放" data-zh="学习">Learning</a>
+      <a href="#contributions" data-zh="贡献与致谢">Contributions</a>
     </nav>
     <button class="language-toggle glass-control" type="button" lang="zh-CN" aria-label="Switch to Chinese" hidden>中文</button>
   </header>
@@ -68,10 +67,12 @@
     <section class="profile" id="about" aria-labelledby="profile-name">
       <div class="bio">
         <p><span data-zh="你好，我是马晨熙，目前是一名大三学生，正在 ">Hi, I'm Chenxi Ma, a third-year undergraduate student currently interning at </span><a href="https://syslab.cs.washington.edu/">UW Systems Lab</a><span data-zh=" 实习，由 "> under the guidance of </span><a href="https://homes.cs.washington.edu/~baris/">Baris Kasikci</a><span data-zh=" 和 "> and </span><a href="https://www.cs.washington.edu/people/faculty/arvind">Arvind Krishnamurthy</a><span data-zh=" 指导。">.</span></p>
-        <p><span data-zh="特别感谢 ">Special thanks to </span><a href="https://kanzhu.netlify.app/uploads/KanZhuCV.pdf" data-zh="朱侃">Kan Zhu</a><span data-zh=" 师兄的关照！"> for his support and mentorship!</span> <span data-zh="师兄即将毕业，实力过硬，欢迎各大厂联系！">He’s graduating soon—an exceptional researcher well worth hiring.</span></p>
         <p data-zh="我的技术兴趣包括推理 Runtime、GPU 调度、混合专家模型，以及分布式推理中的通信与计算。同时，我也对模型架构、Agent Harness、硬件与 Infra 之间的 Co-design 感兴趣。">My technical interests include inference runtimes, GPU scheduling, mixture-of-experts models, and communication and computation in distributed inference. I'm also interested in co-design across model architectures, agent harnesses, hardware, and infrastructure.</p>
         <p><span data-zh="我是 ">I'm a contributor to </span><a href="https://github.com/vllm-project/vllm">vLLM</a><span data-zh=" 的贡献者，方向是 Model Runner V2 中的 MoE 专家并行、双批次重叠（DBO）和基于 NIXL 的 dispatch。">, working on MoE expert parallelism, dual-batch overlap (DBO), and NIXL-based dispatch in Model Runner V2 (MRV2).</span> <span data-zh="随着 MRV2 架构更新，DBO 将成为默认实现。">With the MRV2 architecture update, DBO will become the default implementation.</span> <span data-zh="我也为 ">I also contribute to </span><a href="https://github.com/sgl-project/sglang">SGLang</a><span data-zh=" 贡献代码，关注 TBO 与专家路由记录的正确性。"> (TBO and expert-routing correctness).</span></p>
-        <p data-zh="这里收录我的项目与研究兴趣。个人博客刚刚搭建，之后会在其中分享技术文章和实验笔记。">This page brings together my projects and research interests. My personal blog has just launched, where I'll share technical articles and experiment notes.</p>
+        <p class="site-intro">
+          <span data-zh="我在">On my </span><a data-blog-link href="https://tech-blog-chi.vercel.app/" data-zh="博客">blog</a><span data-zh="分享近期工作、开源贡献与技术思考。">, I share my latest work, open-source contributions, and technical notes.</span>
+          <span data-zh="我为刚接触大模型的读者搭建了"> I built the </span><a data-learning-link role="link" aria-disabled="true" data-zh="学习">learning site</a><span data-zh="，从基础概念和动手实验开始。"> for readers new to LLMs, with foundational concepts and hands-on experiments.</span>
+        </p>
         <p data-zh="我正在寻找大模型基座方向的实习和正式工作。">I'm looking for internship and full-time opportunities in foundation-model (LLM base-model) teams.</p>
         <div class="social-links" aria-label="Social and contact links" data-zh-label="社交与联系方式">
           <a class="social-link glass-control social-email" href="mailto:shannon20051127@gmail.com">
@@ -92,9 +93,6 @@
           <a class="social-link glass-control social-zhihu" data-profile-link="zhihu" href="https://www.zhihu.com/people/zhib1eiazpn">
             <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6" fill="currentColor"/><text x="12" y="17.3" fill="white" text-anchor="middle" font-size="16" font-weight="600" font-family="PingFang SC,Microsoft YaHei,sans-serif">知</text></svg></span><span data-zh="知乎">Zhihu</span>
           </a>
-          <a id="cv" class="social-link glass-control social-resume" href="CV-en.pdf" data-zh-href="CV-zh.pdf" target="_blank" rel="noopener" title="CV (PDF)" data-zh-title="简历（PDF）">
-            <span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span data-zh="简历">CV</span>
-          </a>
         </div>
       </div>
       <aside class="profile-side" aria-label="Profile" data-zh-label="个人资料">
@@ -106,92 +104,86 @@
       </aside>
     </section>
 
-    <section class="section research" id="research" aria-labelledby="research-title">
-      <div class="section-title"><h2 id="research-title" data-zh="研究兴趣">Research Interests</h2></div>
-      <p class="section-intro" data-zh="围绕更高效的模型执行，以及更可靠的推理与决策展开探索。">Exploring efficient model execution and reliable reasoning and decision-making.</p>
-      <dl class="research-list">
-        <div><dt data-zh="高效推理">Efficient Inference</dt><dd data-zh="大模型推理、Runtime 设计、KV cache 与请求调度。">LLM inference, runtime design, KV caches, and request scheduling.</dd></div>
-        <div><dt data-zh="GPU 与分布式系统">GPU &amp; Distributed Systems</dt><dd data-zh="GPU 编程、MoE 执行，以及通信与计算的协同。">GPU programming, MoE execution, and communication–computation co-design.</dd></div>
-      </dl>
-    </section>
 
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="section-title"><h2 id="projects-title" data-zh="精选项目">Selected Projects</h2><a class="all-link" href="https://github.com/algebra-MCX?tab=repositories" data-zh="全部仓库 ↗">All repositories ↗</a></div>
-      <article class="project glass-surface">
-        <a class="project-image" href="https://github.com/algebra-MCX/DeepInfer-Lab" tabindex="-1" aria-hidden="true"><img src="assets/runtime.svg?v=deepinfer-lab" width="210" height="132" alt="" loading="lazy"></a>
-        <div class="project-copy"><h3><a href="https://github.com/algebra-MCX/DeepInfer-Lab">DeepInfer-Lab</a></h3><p class="project-subtitle" data-zh="理解推理 Runtime，从请求到下一个 token。">An inference runtime, from request to next token.</p><p data-zh="可读的 DeepInfer 核心设计复刻，在 4 × B200 上运行真实的 DeepSeek-V4.1-Flash。每一次优化都在 GitHub issue 中记录基线、profile、正确性测试与实测结果；prefill 吞吐目前提升约 4 倍，离官方仍差 8.4 倍。">A readable re-implementation of DeepInfer's core design, running the real DeepSeek-V4.1-Flash on 4 × B200. Every optimization is recorded in a GitHub issue with its baseline, profile, correctness tests and measured result. Prefill throughput is up about 4× so far, and still 8.4× behind the official engine.</p><div class="project-meta"><span data-zh="PyTorch · Triton · 推理">PyTorch · Triton · Inference</span><a href="https://github.com/algebra-MCX/DeepInfer-Lab" data-zh="代码 ↗">Code ↗</a><a href="https://github.com/algebra-MCX/DeepInfer-Lab/issues/3" data-zh="路线图 ↗">Roadmap ↗</a></div></div>
-      </article>
-      <article class="project glass-surface">
-        <a class="project-image" href="https://github.com/algebra-MCX/MoEFlow" tabindex="-1" aria-hidden="true"><img src="assets/compute.svg" width="210" height="132" alt="" loading="lazy"></a>
-        <div class="project-copy"><h3><a href="https://github.com/algebra-MCX/MoEFlow">MoEFlow</a></h3><p class="project-subtitle" data-zh="面向 vLLM 的 MoE 专家并行。">MoE expert parallelism for vLLM.</p><p data-zh="融合 Triton kernel、两倍 NCCL all-to-all，以及在 B200 上的 CUDA Graph decode。">Fused Triton kernels, 2× NCCL all-to-all, and CUDA Graph decode on B200.</p><div class="project-meta"><span data-zh="Triton · NCCL · MoE">Triton · NCCL · MoE</span><a href="https://github.com/algebra-MCX/MoEFlow" data-zh="代码 ↗">Code ↗</a></div></div>
-      </article>
-    </section>
 
     <section class="section contributions" id="contributions" aria-labelledby="contributions-title">
-      <span id="vllm" aria-hidden="true"></span>
+      <span id="projects" aria-hidden="true"></span>
       <div class="section-title"><h2 id="contributions-title" data-zh="贡献与致谢">Contributions &amp; Thanks</h2><a class="all-link" href="https://github.com/search?q=is%3Apr+author%3Aalgebra-MCX+is%3Apublic+-user%3Aalgebra-MCX&amp;type=pullrequests" data-zh="全部 PR ↗">All PRs ↗</a></div>
       <p class="section-intro" data-zh="我为 vLLM 和 SGLang 贡献代码，关注 MoE 专家并行、批次重叠、专家路由记录、NIXL dispatch 和 KV cache。以下收录已合并和进行中的工作。感谢在这些工作中给予帮助的伙伴。">I contribute to vLLM and SGLang, with a focus on MoE expert parallelism, batch overlap, expert-routing records, NIXL dispatch, and KV caches. Selected merged and ongoing contributions are listed below. Thanks to everyone who helped along the way.</p>
-      <dl class="research-list contribution-list">
-        <div>
-          <dt><a href="https://github.com/vllm-project/vllm/pull/63476">vLLM #63476 · Report the first failed DBO microbatch</a></dt>
-          <dd>
-            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
-            <p data-zh="报告最先记录的 microbatch 异常，避免后续错误掩盖原始问题。">Report the first recorded microbatch failure so that follow-on errors do not hide the original problem.</p>
-            <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/LucasWilkinson">@LucasWilkinson</a></div>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/vllm-project/vllm/pull/63372">vLLM #63372 · Keep routed-expert rows of every DBO microbatch</a></dt>
-          <dd>
-            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
-            <p data-zh="按各 microbatch 的 token 偏移保存专家路由，修复路由结果相互覆盖的问题。">Preserve expert routing at each microbatch's token offset, fixing overwritten routing results.</p>
-            <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/aoshen02">@aoshen02</a>, <a href="https://github.com/Ronald1995">@Ronald1995</a></div>
-            <div class="contribution-credit"><span data-zh="共同作者（重构与补充测试）：">Co-author (refactor &amp; additional tests): </span><a href="https://github.com/Ronald1995">@Ronald1995</a></div>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/vllm-project/vllm/pull/63485">vLLM #63485 · Size NIXL dispatch from synchronized execution slices</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="按同步后的 DP / SP 执行规模设置 NIXL dispatch 容量，减少小批次下的冗余工作。">Size NIXL dispatch from synchronized DP / SP execution sizes to reduce unnecessary work for small batches.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/vllm-project/vllm/pull/63556">vLLM #63556 · Stage imbalanced MLA decode rows for FULL microbatch graphs</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="在 DP 负载不均时，将符合条件的 MLA decode token 分布到已捕获的 microbatch 区域，并在采样前恢复逻辑顺序。">Distribute eligible MLA decode tokens across captured microbatch regions under uneven DP loads, then restore logical order before sampling.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/vllm-project/vllm/pull/63567">vLLM #63567 · Support routed-expert returns with decode staging</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="草稿">Draft</span>
-            <p data-zh="基于 #63556，在 decode staging 后按逻辑 token 顺序返回专家路由，并在捕获缓冲区复用后保持路由快照有效。">Build on #63556 to return expert-routing records in logical token order after decode staging, with snapshots that remain valid when capture buffers are reused.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/krishchaudh/vllm/pull/1">krishchaudh/vllm #1 · Cover capped async-load admission and align P/D blocks</a></dt>
-          <dd>
-            <span class="contribution-status" data-zh="已合并到协作者分支">Merged into collaborator branch</span>
-            <p data-zh="补充异步 KV 加载准入上限的回归测试，并统一 prefill/decode 测试中的 block 大小。已合并到协作者的修复分支。">Add regression coverage for capped asynchronous KV-load admission and align block sizes in prefill/decode tests. Merged into the collaborator's fix branch.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/sgl-project/sglang/pull/48666">SGLang #48666 · Capture routed experts at each TBO child's parent rows</a></dt>
-          <dd>
-            <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
-            <p data-zh="将 TBO 子批次的专家路由写入父批次中对应的 token 行，修复共享缓冲区中的记录覆盖，并对齐非 EP 数据并行场景下的行偏移。">Map each TBO child's expert-routing records to its rows in the parent batch, preventing shared-buffer overwrites and aligning row offsets for non-EP data parallelism.</p>
-          </dd>
-        </div>
-        <div>
-          <dt><a href="https://github.com/sgl-project/sglang/pull/48691">SGLang #48691 · Read DP-local routed-expert rows for every A2A backend</a></dt>
-          <dd>
-            <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
-            <p data-zh="在 DP attention 下，统一各 all-to-all 后端对 DP 本地专家路由记录的读取方式，修复 NIXL 在非零 DP rank 上返回错误专家 ID 的问题。">Read DP-local expert-routing records consistently across all-to-all backends under DP attention, fixing incorrect expert IDs returned by NIXL on nonzero DP ranks.</p>
-          </dd>
-        </div>
-      </dl>
+      <nav class="contribution-nav" aria-label="Open-source projects" data-zh-label="开源项目">
+        <a class="glass-control" href="#vllm">vLLM</a>
+        <a class="glass-control" href="#sglang">SGLang</a>
+      </nav>
+      <section class="contribution-group" aria-labelledby="vllm">
+        <h3 id="vllm">vLLM</h3>
+        <dl class="research-list contribution-list">
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/64086">vLLM #64086 · Preserve invalid expert IDs in NIXL round-robin mapping</a></dt>
+            <dd>
+              <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+              <p data-zh="修复 NIXL 专家重映射把填充标记 −1 误当成有效专家的问题，并添加覆盖 dispatch 和 combine 的回归测试。">Keep the padding sentinel −1 from being remapped to a real expert in NIXL, with regression tests covering dispatch and combine.</p>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/63476">vLLM #63476 · Report the first failed DBO microbatch</a></dt>
+            <dd>
+              <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+              <p data-zh="报告最先记录的 microbatch 异常，避免后续错误掩盖原始问题。">Report the first recorded microbatch failure so that follow-on errors do not hide the original problem.</p>
+              <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/LucasWilkinson">@LucasWilkinson</a></div>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/63372">vLLM #63372 · Keep routed-expert rows of every DBO microbatch</a></dt>
+            <dd>
+              <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+              <p data-zh="按各 microbatch 的 token 偏移保存专家路由，修复路由结果相互覆盖的问题。">Preserve expert routing at each microbatch's token offset, fixing overwritten routing results.</p>
+              <p><a data-blog-link data-blog-path="/writing/vllm-dbo-correctness/" href="https://github.com/vllm-project/vllm/pull/63372" data-zh="故障分析与回归测试">Failure analysis and regression tests</a></p>
+              <div class="contribution-credit"><span data-zh="感谢帮助：">Thanks for the help: </span><a href="https://github.com/aoshen02">@aoshen02</a>, <a href="https://github.com/Ronald1995">@Ronald1995</a></div>
+              <div class="contribution-credit"><span data-zh="共同作者（重构与补充测试）：">Co-author (refactor &amp; additional tests): </span><a href="https://github.com/Ronald1995">@Ronald1995</a></div>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/63485">vLLM #63485 · Size NIXL dispatch from synchronized execution slices</a></dt>
+            <dd>
+              <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
+              <p data-zh="按同步后的 DP / SP 执行规模设置 NIXL dispatch 容量，减少小批次下的冗余工作。">Size NIXL dispatch from synchronized DP / SP execution sizes to reduce unnecessary work for small batches.</p>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/63556">vLLM #63556 · Stage imbalanced MLA decode rows for FULL microbatch graphs</a></dt>
+            <dd>
+              <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
+              <p data-zh="在 DP 负载不均时，将符合条件的 MLA decode token 分布到已捕获的 microbatch 区域，并在采样前恢复逻辑顺序。">Distribute eligible MLA decode tokens across captured microbatch regions under uneven DP loads, then restore logical order before sampling.</p>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/vllm-project/vllm/pull/63567">vLLM #63567 · Support routed-expert returns with decode staging</a></dt>
+            <dd>
+              <span class="contribution-status contribution-status--pending" data-zh="草稿">Draft</span>
+              <p data-zh="基于 #63556，在 decode staging 后按逻辑 token 顺序返回专家路由，并在捕获缓冲区复用后保持路由快照有效。">Build on #63556 to return expert-routing records in logical token order after decode staging, with snapshots that remain valid when capture buffers are reused.</p>
+            </dd>
+          </div>
+        </dl>
+      </section>
+      <section class="contribution-group" aria-labelledby="sglang">
+        <h3 id="sglang">SGLang</h3>
+        <dl class="research-list contribution-list">
+          <div>
+            <dt><a href="https://github.com/sgl-project/sglang/pull/48666">SGLang #48666 · Capture routed experts at each TBO child's parent rows</a></dt>
+            <dd>
+              <span class="contribution-status" data-zh="已合并到 main">Merged into main</span>
+              <p data-zh="将 TBO 子批次的专家路由写入父批次中对应的 token 行，修复共享缓冲区中的记录覆盖，并对齐非 EP 数据并行场景下的行偏移。">Map each TBO child's expert-routing records to its rows in the parent batch, preventing shared-buffer overwrites and aligning row offsets for non-EP data parallelism.</p>
+            </dd>
+          </div>
+          <div>
+            <dt><a href="https://github.com/sgl-project/sglang/pull/48691">SGLang #48691 · Read DP-local routed-expert rows for every A2A backend</a></dt>
+            <dd>
+              <span class="contribution-status contribution-status--pending" data-zh="进行中">In progress</span>
+              <p data-zh="在 DP attention 下，统一各 all-to-all 后端对 DP 本地专家路由记录的读取方式，修复 NIXL 在非零 DP rank 上返回错误专家 ID 的问题。">Read DP-local expert-routing records consistently across all-to-all backends under DP attention, fixing incorrect expert IDs returned by NIXL on nonzero DP ranks.</p>
+            </dd>
+          </div>
+        </dl>
+      </section>
     </section>
 
   </main>

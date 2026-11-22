@@ -217,11 +217,10 @@ h2 { font-size: 26px; }
 .social-link.glass-control:hover { text-decoration: none; }
 .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 23px; height: 23px; flex-shrink: 0; }
 .social-icon svg { display: block; width: 100%; height: 100%; }
-.social-email .social-icon, .social-resume .social-icon { color: var(--link); }
+.social-email .social-icon { color: var(--link); }
 .social-red .social-icon { width: 29px; color: #e93650; }
 .social-zhihu .social-icon { color: #267bdf; }
 .social-link[aria-disabled="true"] { opacity: .65; cursor: default; }
-.social-resume:disabled { appearance: none; transform: none; }
 @media(hover:hover) and (pointer:fine) { .social-link:not([aria-disabled="true"]):hover { transform: translateY(-2px); box-shadow: 0 9px 22px -12px rgba(60, 110, 185, .45), var(--glass-inset); } }
 @media(max-width:760px) {
   .shell { width: calc(100% - 48px); }
@@ -350,3 +349,31 @@ main, .bio, .project-copy { min-width: 0; }
   .contribution-list dd { font-size: 15px; }
   .contribution-credit { font-size: 14px; }
 }
+
+.contribution-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 0 24px;
+}
+.contribution-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 16px;
+  border-radius: 14px;
+  color: var(--ink);
+  font-size: 14px;
+}
+.contribution-nav a:hover,
+.contribution-nav a[aria-current="location"] {
+  color: var(--link);
+  background: var(--lens-fill);
+  text-decoration: none;
+}
+.contribution-group:not([hidden]) + .contribution-group:not([hidden]) {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.contribution-group > h3 { margin: 0 0 16px; font-size: 20px; }

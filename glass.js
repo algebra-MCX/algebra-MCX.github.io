@@ -192,7 +192,12 @@
     refreshLens();
   }
   function selectFromHash() {
-    selected = links.find(link => link.getAttribute("href") === (window.location.hash || "#about")) || links[0];
+    const hash = window.location.hash || "#about";
+    const section = document.getElementById(hash.slice(1))?.closest("section[id]");
+    const sectionHash = section ? `#${section.id}` : hash;
+    selected = links.find(link => link.getAttribute("href") === hash)
+      || links.find(link => link.getAttribute("href") === sectionHash)
+      || links[0];
     updateSelection();
   }
   links.forEach(link => {
